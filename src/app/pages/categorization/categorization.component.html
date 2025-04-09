@@ -1,0 +1,111 @@
+<div class="categorization">
+  <div class="container">
+    <div class="text-center">
+      <h1>Bienvenido a LitMap AI!</h1>
+      <p>Iniciemos con la categorización de articulos científicos del mapeo sistemático, necesitas tener estas 2 cosas listas:</p>
+    </div>
+    <div>
+      <h2>Subir Archivos PDF</h2>
+      <input type="file" (change)="onFileSelected($event)" multiple accept=".pdf" />
+      <button (click)="uploadFiles()">Subir Archivos</button>
+    </div>
+    <div>
+      <h2>Subir Archivo Excel</h2>
+      <input type="file" (change)="onFileExcelSelected($event)" accept=".xlsx, .xls" />
+      <button (click)="uploadFile()">Subir Archivo</button>
+    </div>
+    <div class="upload-container">
+      <!-- <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cargar excel con datos de los estudios</h5>
+          <p>Por favor, edite el archivo <strong><code>./toolia/assets/datospdf.xlsx</code></strong> con los datos de su investigación. Asegúrese de completar toda la información necesaria y guardar los cambios antes de cerrar el archivo.</p>
+          
+          <div class="form-check form-switch checkbox-container">
+            <mat-slide-toggle
+                class="example-margin"
+                (change)="onChange($event)"
+                [(ngModel)]="isChecked">
+
+              Estoy Listo!
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cargar excel con las preguntas de investigación</h5>
+          <p>Por favor, edite el archivo <strong><code>./toolia/assets/preguntas.xlsx</code></strong> con las preguntas de su investigación. Asegúrese de ingresar las preguntas y guardar los cambios antes de cerrar el archivo.</p>
+          <div class="form-check form-switch checkbox-container">
+            <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->
+            <mat-slide-toggle
+                class="example-margin"
+                (change)="onChange2($event)"
+                [(ngModel)]="isChecked2">
+              Estoy Listo!
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <h5 class="card-title">Cargar los articulos de investigación</h5>
+            <p>Por favor, coloque los archivos PDF o estudios en la carpeta <strong><code>./toolia/assets/estudios</code></strong> , para poder iniciar con el proceso de categorización.</p>
+          </div>
+          <div class="form-check form-switch checkbox-container">
+            <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->
+            <mat-slide-toggle
+                class="example-margin"
+                (change)="onChange3($event)"
+                [(ngModel)]="isChecked3">
+              Estoy Listo!
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <button [disabled]="isSuccessful" *ngIf="!isLoading" class="btn  button-start" (click)="onRun()" >Iniciar</button>
+      <button *ngIf="isLoading" class="btn  button-loading"><mat-icon *ngIf="isLoading" >hourglass_empty</mat-icon></button>
+      
+    </div>
+    <div *ngIf="isLoading" class="alert alert-warning text-center mt-3" role="alert">
+      <p><strong>Procesando categorización de artículos &#x23F3; &#x2728;</strong> 
+          <span class="loading">
+              <span class="dot">.</span>
+              <span class="dot">.</span>
+              <span class="dot">.</span>
+              <span class="dot">.</span>
+          </span>
+      </p>
+    </div>
+  
+    <div *ngIf="isError" class="alert alert-danger text-center mt-3" role="alert">
+      <p><strong>Error al procesar la categorización de artículos</strong></p>
+    </div>
+  
+    <div *ngIf="isSuccessful" class="alert alert-success text-center mt-3" role="alert">
+      <p><strong>Los artículos científicos han sido categorizados exitosamente. Puede revisar los resultados ahora. &#x2B07; &#x2B07; &#x2B07;</strong> </p>
+      <p *ngIf="isSuccessful">Tiempo de respuesta: {{ responseTime }}.</p>
+    </div>
+
+    <!-- <div class="action-buttons text-center mt-3">
+      <button *ngIf="!isSuccessful" class="btn actions"><i class='bx bx-search-alt-2'></i></button>
+      <button *ngIf="!isSuccessful" class="btn actions"><i class='bx bxs-file-export'></i></button>  
+    </div>
+     -->
+     <div class="action-buttons text-center mt-3">
+      <div class="action-button">
+        <button *ngIf="isSuccessful" class="btn actions" (click)="onViewResults()"><i class='bx bx-search-alt-2 icon-large'></i></button>
+        <label *ngIf="isSuccessful">Ver resultados</label>
+      </div>
+      <div class="action-button">
+        <button *ngIf="isSuccessful" class="btn actions"><i class='bx bxs-file-export icon-large'></i></button>
+        <label *ngIf="isSuccessful">Exportar a Excel</label>
+      </div>
+    </div>
+  </div>
+  
+</div>

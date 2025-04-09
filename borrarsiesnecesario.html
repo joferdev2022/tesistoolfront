@@ -1,0 +1,51 @@
+<div>
+    <h1>LitMap AI TOOL</h1>
+    <div class="button-container">
+      <!-- <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>note_add</mat-icon>
+      </button>
+  
+      <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>note_add</mat-icon>
+      </button> -->
+      <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="onRun()">
+        <mat-icon *ngIf="!isLoading">precision_manufacturing</mat-icon>
+        <mat-icon *ngIf="isLoading" >hourglass_empty</mat-icon>
+        
+      </button>
+      <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="onExport()">
+        <mat-icon *ngIf="!isLoading">library_books</mat-icon>
+        <mat-icon *ngIf="isLoading" >hourglass_empty</mat-icon>
+      </button>
+    </div>
+    <div class="accordion-container">
+      <mat-accordion class="accordion-card" multi>
+        <mat-expansion-panel *ngFor="let item of pdfData">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.pdf_name}} <span>100</span>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              0
+              <mat-icon>percent</mat-icon>
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <div >
+            <form action="" class="answer-container">
+              <div class="answer" *ngFor="let question of item.questions; let i = index">
+                <mat-form-field class="answer-input">
+                  <mat-label>{{shortLabel[i]}}</mat-label>
+                  <input matInput [value]="question.result">
+                </mat-form-field>
+                <div class="answer-checkbox">
+                  <mat-checkbox ></mat-checkbox>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+      
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>

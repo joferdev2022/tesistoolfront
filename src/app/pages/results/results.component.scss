@@ -1,0 +1,29 @@
+.results {
+    margin: 15px 30px 0 15px;
+}
+
+.actions {
+    background-color: #775298;
+    border-color: #775298;
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin-top: 10px; 
+}
+
+// .action-button {
+//     display: inline-block;
+//     text-align: center;
+//     margin: 0 10px;
+    
+
+//   }
+
+.action-button label {
+    display: block;
+    margin-top: 5px;
+  }
+
+.icon-large {
+    font-size: 24px; // Ajusta el tamaño según sea necesario
+}

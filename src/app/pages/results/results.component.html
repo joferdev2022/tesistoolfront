@@ -1,0 +1,37 @@
+<div class="results">
+    <div class="text-center">
+        <h1>Resultados</h1>
+    </div>
+    <div class="action-button text-center">
+        <div>
+            <button  class="btn actions" (click)="onExport()"><i class='bx bxs-file-export icon-large'></i></button>
+            <label >Exportar a Excel</label>
+        </div>
+        <!-- <div *ngIf="isError" class="alert alert-danger text-center mt-3" role="alert">
+            <p><strong>Error al procesar la categorización de artículos</strong></p>
+        </div> -->
+        <div *ngIf="isSuccessful" class="alert alert-success text-center mt-3" role="alert">
+            <p>El archivo Excel se ha creado correctamente y se encuentra disponible en la siguiente ruta: <code>"./toolia/output.xlsx"</code></p>
+        </div>
+    </div>
+
+    <div class="accordion-container mt-5">
+        <mat-accordion class="accordion-card" multi>
+            <mat-expansion-panel *ngFor="let item of pdfData">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item.pdf_name}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                    <form action="">
+                        <div class="answer" *ngFor="let question of item.questions; let i = index">
+                            <label>Pregunta {{i+1}}:</label>
+                            <input type="text" [(ngModel)]="question.result" name="answer{{i}}" class="form-control" />
+                        </div>
+                    </form>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
