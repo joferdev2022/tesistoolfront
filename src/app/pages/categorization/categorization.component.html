@@ -64,10 +64,10 @@
           <p>Por favor, seleccione los articulos de investigacion o archivos PDF <strong><code>(.pdf)</code></strong>, para poder iniciar con el proceso de categorización.</p>
           <div class="form-upload-container">
             <div class="form-group-file">
-              <label for="excelFile"><strong>Subir archivos PDF</strong></label>
-              <input id="excelFile" type="file" (change)="onFileExcelSelected($event)" accept=".xlsx, .xls" class="form-control" />
+              <label for="pdfFile"><strong>Subir archivos PDF</strong></label>
+              <input id="pdfFile" type="file" (change)="onFileSelected($event)" multiple accept=".pdf" class="form-control" />
             </div>
-            <button class="btn button-start mt-4" (click)="uploadFile()">Subir</button>  
+            <button class="btn button-start mt-4" (click)="uploadFiles()">Subir</button>  
           </div>
           <div class="form-check form-switch checkbox-container">
             <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->
