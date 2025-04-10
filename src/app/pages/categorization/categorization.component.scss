@@ -92,6 +92,31 @@
     text-align: center;
   }
 
+
+.form-upload-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    // margin: 15px;
+    gap: 0.5rem;
+    margin-bottom: 15px;
+}
+
+.input-upload{
+
+}
+
+.form-group-file {
+
+}
+
+.button-upload-file {
+    background-color: #f06292;
+    border-color: #f06292;
+    color: white;
+}
+
 .button-start{
     // margin-right : 242px!important;
     background-color: #775298;

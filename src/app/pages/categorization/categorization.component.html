@@ -4,7 +4,7 @@
       <h1>Bienvenido a LitMap AI!</h1>
       <p>Iniciemos con la categorización de articulos científicos del mapeo sistemático, necesitas tener estas 2 cosas listas:</p>
     </div>
-    <div>
+    <!-- <div>
       <h2>Subir Archivos PDF</h2>
       <input type="file" (change)="onFileSelected($event)" multiple accept=".pdf" />
       <button (click)="uploadFiles()">Subir Archivos</button>
@@ -13,7 +13,7 @@
       <h2>Subir Archivo Excel</h2>
       <input type="file" (change)="onFileExcelSelected($event)" accept=".xlsx, .xls" />
       <button (click)="uploadFile()">Subir Archivo</button>
-    </div>
+    </div> -->
     <div class="upload-container">
       <!-- <div class="card">
         <div class="card-body">
@@ -35,7 +35,15 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Cargar excel con las preguntas de investigación</h5>
-          <p>Por favor, edite el archivo <strong><code>./toolia/assets/preguntas.xlsx</code></strong> con las preguntas de su investigación. Asegúrese de ingresar las preguntas y guardar los cambios antes de cerrar el archivo.</p>
+          <p>Por favor seleccione el archivo excel donde guarda sus preguntas de investigación, recuerde que el formato del archivo debe de ser <strong><code>"preguntas".xlsx</code></strong></p>
+          <!-- <p>Por favor, edite el archivo <strong><code>./toolia/assets/preguntas.xlsx</code></strong> con las preguntas de su investigación. Asegúrese de ingresar las preguntas y guardar los cambios antes de cerrar el archivo.</p> -->
+          <div class="form-upload-container">
+            <div class="form-group-file">
+              <label for="excelFile"><strong>Archivo Excel</strong></label>
+              <input id="excelFile" type="file" (change)="onFileExcelSelected($event)" accept=".xlsx, .xls" class="form-control input-upload" />
+            </div>
+            <button class="btn button-start mt-4" (click)="uploadFile()">Subir</button>
+          </div>
           <div class="form-check form-switch checkbox-container">
             <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->
             <mat-slide-toggle
@@ -50,9 +58,16 @@
 
       <div class="card">
         <div class="card-body">
-          <div>
-            <h5 class="card-title">Cargar los articulos de investigación</h5>
-            <p>Por favor, coloque los archivos PDF o estudios en la carpeta <strong><code>./toolia/assets/estudios</code></strong> , para poder iniciar con el proceso de categorización.</p>
+          
+          <h5 class="card-title">Cargar los articulos de investigación</h5>
+          <!-- <p>Por favor, coloque los archivos PDF o estudios en la carpeta <strong><code>./toolia/assets/estudios</code></strong> , para poder iniciar con el proceso de categorización.</p> -->
+          <p>Por favor, seleccione los articulos de investigacion o archivos PDF <strong><code>(.pdf)</code></strong>, para poder iniciar con el proceso de categorización.</p>
+          <div class="form-upload-container">
+            <div class="form-group-file">
+              <label for="excelFile"><strong>Subir archivos PDF</strong></label>
+              <input id="excelFile" type="file" (change)="onFileExcelSelected($event)" accept=".xlsx, .xls" class="form-control" />
+            </div>
+            <button class="btn button-start mt-4" (click)="uploadFile()">Subir</button>  
           </div>
           <div class="form-check form-switch checkbox-container">
             <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->
