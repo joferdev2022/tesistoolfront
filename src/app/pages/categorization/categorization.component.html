@@ -2,7 +2,7 @@
   <div class="container">
     <div class="text-center">
       <h1>Bienvenido a LitMap AI!</h1>
-      <p>Iniciemos con la categorización de articulos científicos del mapeo sistemático, necesitas tener estas 2 cosas listas:</p>
+      <p class="sub_title">Iniciemos con la categorización de articulos científicos del mapeo sistemático, necesitas tener estas 2 cosas listas:</p>
     </div>
     <!-- <div>
       <h2>Subir Archivos PDF</h2>
@@ -66,8 +66,17 @@
             <div class="form-group-file">
               <label for="pdfFile"><strong>Subir archivos PDF</strong></label>
               <input id="pdfFile" type="file" (change)="onFileSelected($event)" multiple accept=".pdf" class="form-control" />
+              <mat-hint *ngIf="isUploading" class="hint_upload_file">subiendo archivos 
+                <span class="loading">
+                  <span class="dot">.</span>
+                  <span class="dot">.</span>
+                  <span class="dot">.</span>
+                  <span class="dot">.</span>
+                </span>
+              </mat-hint>
             </div>
-            <button class="btn button-start mt-4" (click)="uploadFiles()">Subir</button>  
+            <button *ngIf="!isUploading" class="btn button-start mt-4" (click)="uploadFiles()">Subir</button>  
+            <button *ngIf="isUploading" class="btn  button-loading"><mat-icon *ngIf="isUploading" >hourglass_empty</mat-icon></button>
           </div>
           <div class="form-check form-switch checkbox-container">
             <!-- <label class="form-check-label m-3" for="flexSwitchCheckDefault">Listo!</label> -->

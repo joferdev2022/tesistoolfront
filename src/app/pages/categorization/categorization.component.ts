@@ -30,6 +30,8 @@ export class CategorizationComponent {
   isSuccessful = false;
   responseTime: string = '';
 
+  isUploading = false;
+
   selectedFiles: File[] = [];
   selectedFile: File | null = null;
 
@@ -92,14 +94,26 @@ export class CategorizationComponent {
       return;
     }
 
-    this.answersService.uploadFiles(this.selectedFiles).subscribe(
-      (response: any) => {
+    this.isUploading = true; // Set uploading state to true
+
+    this.answersService.uploadFiles(this.selectedFiles).subscribe({
+      next: (response: any) => {
+        this.isUploading = false; // Reset uploading state
         Swal.fire('¡Éxito!', 'Los archivos se han subido correctamente.', 'success');
+        this.selectedFiles = []; // Clear the selected files after upload
       },
-      (error: any) => {
+      error: (error: any) => {
         Swal.fire('Error', 'Hubo un problema al subir los archivos.', 'error');
       }
-    );
+    });
+    // this.answersService.uploadFiles(this.selectedFiles).subscribe(
+    //   (response: any) => {
+    //     Swal.fire('¡Éxito!', 'Los archivos se han subido correctamente.', 'success');
+    //   },
+    //   (error: any) => {
+    //     Swal.fire('Error', 'Hubo un problema al subir los archivos.', 'error');
+    //   }
+    // );
   }
 
   onRun() {
@@ -136,7 +150,7 @@ export class CategorizationComponent {
     } else {
       Swal.fire({
         title: "OOPS...",
-        text: "Debe de seleccionar 'Estoy listo' en los 3 casos.",
+        text: "Debe de seleccionar 'Estoy listo' en los 2 casos.",
         icon: "error"
       });
     }
